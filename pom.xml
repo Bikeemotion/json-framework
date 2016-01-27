@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.bikeemotion</groupId>
     <artifactId>oss-parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
   </parent>
 
   <groupId>com.bikeemotion</groupId>
@@ -62,11 +62,6 @@
       <artifactId>core</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <dependency>
-      <groupId>com.bikeemotion</groupId>
-      <artifactId>oss-parent</artifactId>
-      <version>1.0.0</version>
-    </dependency> 
     
     <dependency>
       <groupId>org.testng</groupId>
@@ -75,4 +70,5 @@
     </dependency>
   </dependencies>
   
+
 </project>
