@@ -1474,4 +1474,118 @@ public class JSONCollectionTest {
     JSONCollection jc = newItems.purgeInvalidItems(oldItems);
     assertEquals(jc.getValue().length(), 4);
   }
+
+  @Test
+  public void test_create_JSON_collection_with_array_properties()
+    throws BusinessException {
+
+    JSONObject atomicSchemaObject = new JSONObject(
+        "{\n" +
+            "    \"id\": \"00000000-0000-0000-0000-00000000\",\n" +
+            "    \"state\": \"0\",\n" +
+            "    \"checklist\": [\n" +
+            "        {\n" +
+            "            \"min\": 0,\n" +
+            "            \"max\": 256,\n" +
+            "            \"type\": \"sstring\",\n" +
+            "            \"mandatory\": \"true\",\n" +
+            "            \"value\": \"\"\n" +
+            "        }\n" +
+            "    ]\n" +
+            "}");
+
+    JSONArray valuesCollectionObject = new JSONArray(
+        "[\n" +
+            "    {\n" +
+            "        \"id\": \"7c889624-021a-4b38-a1ee-29a4dd590455\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": [\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 1\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 2\"\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"id\": \"4ca2c405-0f05-4ca9-b1df-3e2a733cc352\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": [\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 1\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 2\"\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    }\n" +
+            "]");
+
+    JSONCollection resultCollection = new JSONCollection(atomicSchemaObject,
+        valuesCollectionObject);
+
+    JSONCollection expectedCollection = new JSONCollection(
+        "[\n" +
+            "    {\n" +
+            "        \"id\": \"7c889624-021a-4b38-a1ee-29a4dd590455\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": [\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 1\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 2\"\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"id\": \"4ca2c405-0f05-4ca9-b1df-3e2a733cc352\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": [\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 1\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"min\": 0,\n" +
+            "                \"max\": 256,\n" +
+            "                \"type\": \"sstring\",\n" +
+            "                \"mandatory\": \"true\",\n" +
+            "                \"value\": \"Check 2\"\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    }\n" +
+            "]");
+
+    assertEquals(resultCollection.getValue().toString(), expectedCollection
+        .getValue().toString());
+  }
 }
