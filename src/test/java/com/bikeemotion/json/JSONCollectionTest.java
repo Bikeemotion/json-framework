@@ -12,7 +12,6 @@
 package com.bikeemotion.json;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -1154,7 +1153,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_suppress_not_active() throws Exception {
+  public void test_suppress_not_active()
+    throws Exception {
     final String values = "" //
         + "[  \n"//
         + "   {  \n" //
@@ -1194,7 +1194,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_suppress_not_active_except_ignores() throws Exception {
+  public void test_suppress_not_active_except_ignores()
+    throws Exception {
     final String values = "" //
         + "[  \n"//
         + "   {  \n" //
@@ -1234,7 +1235,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_suppress_not_visible() throws Exception {
+  public void test_suppress_not_visible()
+    throws Exception {
     final String values = "" //
         + "[  \n"//
         + "   {  \n" //
@@ -1274,7 +1276,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_suppress_not_visible_except_ignores() throws Exception {
+  public void test_suppress_not_visible_except_ignores()
+    throws Exception {
     final String values = "" //
         + "[  \n"//
         + "   {  \n" //
@@ -1314,7 +1317,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_suppress_deleted() throws Exception {
+  public void test_suppress_deleted()
+    throws Exception {
     final String values = "" //
         + "[  \n"//
         + "   {  \n" //
@@ -1336,7 +1340,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_suppress_deleted_expect_ignores() throws Exception {
+  public void test_suppress_deleted_expect_ignores()
+    throws Exception {
     final String values = "" //
         + "[  \n"//
         + "   {  \n" //
@@ -1358,7 +1363,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_find_items_with_property_not_available() throws Exception {
+  public void test_find_items_with_property_not_available()
+    throws Exception {
 
     JSONCollection object = new JSONCollection(""//
         + "[  \n"//
@@ -1378,7 +1384,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_generate_identifiers() throws Exception {
+  public void test_generate_identifiers()
+    throws Exception {
 
     JSONCollection object = new JSONCollection(""//
         + "[  \n"//
@@ -1400,7 +1407,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_append_removed_items() throws Exception {
+  public void test_append_removed_items()
+    throws Exception {
 
     JSONCollection oldItems = new JSONCollection(""//
         + "[  \n"//
@@ -1430,7 +1438,8 @@ public class JSONCollectionTest {
   }
 
   @Test
-  public void test_purge_invalid_items() throws Exception {
+  public void test_purge_invalid_items()
+    throws Exception {
 
     JSONCollection oldItems = new JSONCollection(""//
         + "[  \n"//
@@ -1587,5 +1596,49 @@ public class JSONCollectionTest {
 
     assertEquals(resultCollection.getValue().toString(), expectedCollection
         .getValue().toString());
+  }
+
+  @Test
+  public void test_create_JSON_collection_with_empty_array()
+    throws BusinessException {
+
+    JSONObject atomicSchemaObject = new JSONObject(
+        "{\n" +
+            "    \"id\": \"00000000-0000-0000-0000-00000000\",\n" +
+            "    \"state\": \"0\",\n" +
+            "    \"checklist\": []\n" +
+            "}");
+
+    JSONArray valuesCollectionObject = new JSONArray(
+        "[\n" +
+            "    {\n" +
+            "        \"id\": \"7c889624-021a-4b38-a1ee-29a4dd590455\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": []\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"id\": \"4ca2c405-0f05-4ca9-b1df-3e2a733cc352\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": []\n" +
+            "    }\n" +
+            "]");
+
+    JSONCollection resultCollection = new JSONCollection(atomicSchemaObject, valuesCollectionObject);
+
+    JSONCollection expectedCollection = new JSONCollection(
+        "[\n" +
+            "    {\n" +
+            "        \"id\": \"7c889624-021a-4b38-a1ee-29a4dd590455\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": []\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"id\": \"4ca2c405-0f05-4ca9-b1df-3e2a733cc352\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": []\n" +
+            "    }\n" +
+            "]");
+
+    assertEquals(resultCollection.getValue().toString(), expectedCollection.getValue().toString());
   }
 }

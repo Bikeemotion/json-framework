@@ -847,9 +847,10 @@ public class JSON implements Serializable {
         }
       } else if (schemaKeyValue instanceof JSONArray) {
         JSONArray schemaKeyValueCollection = (JSONArray) schemaKeyValue;
-        if (!schemaObject.has(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG)
-            || !((String) schemaObject.get(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG))
-                .equals(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG_INSTANCE_STRING)) {
+        if (schemaKeyValueCollection.length() > 0 && 
+            (!schemaObject.has(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG) || 
+            !((String) schemaObject.get(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG))
+                .equals(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG_INSTANCE_STRING))) {
           deepAdd((JSONObject) schemaKeyValueCollection.getJSONObject(0),
               (JSONObject) newValueObject.getJSONArray(key).get(0));
         }
