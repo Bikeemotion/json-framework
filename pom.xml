@@ -11,7 +11,7 @@
   <groupId>com.bikeemotion</groupId>
   <artifactId>json-framework</artifactId>
   <name>Bikeemotion JSON Framework</name>
-  <version>1.0.2</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>bundle</packaging>
 
   <issueManagement>
