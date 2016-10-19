@@ -30,7 +30,7 @@ public class JSONCollectionTest {
 
   @Test
   public void test_create_JSON_collection_by_string_conforming_to_schema()
-      throws BusinessException {
+    throws BusinessException {
 
     String atomicSchema = "{\"id\":-1, \"money\":{\"value\":0, \"type\":\"number\"}, \"name\":{\"type\":sstring, \"value\":\"\"}}";
 
@@ -47,7 +47,7 @@ public class JSONCollectionTest {
 
   @Test
   public void test_create_JSON_collection_by_object_conforming_to_schema()
-      throws BusinessException {
+    throws BusinessException {
 
     JSONObject atomicSchemaObject = new JSONObject(
         "{\"id\":-1, \"money\":{\"value\":0, \"type\":\"number\"}, \"name\":{\"type\":sstring, \"value\":\"\"}}");
@@ -244,55 +244,55 @@ public class JSONCollectionTest {
   @Test
   public void test_enforcement_of_unique_values_from_object_property() {
     final String values = "[\n" +
-            "  {\n" +
-            "      \"id\": \"258fd859-f2df-4a0e-8321-ca4d96831dd7\",\n" +
-            "      \"price\": {\n" +
-            "          \"min\": 0,\n" +
-            "          \"max\": 9999.99,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": 10,\n" +
-            "          \"type\": \"number\"\n" +
-            "      },\n" +
-            "      \"description\": {\n" +
-            "          \"min\": 1,\n" +
-            "          \"unique\": {\n" +
-            "              \"value\": \"true\"\n" +
-            "          },\n" +
-            "          \"max\": 128,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": {\n" +
-            "              \"pt-pt\": \"Passe\",\n" +
-            "              \"en-us\": \"Pass\",\n" +
-            "              \"es-es\": \"Passe\"\n" +
-            "          },\n" +
-            "          \"type\": \"string\"\n" +
-            "      }\n" +
-            "  },\n" +
-            "  {\n" +
-            "      \"id\": \"22565b63-da97-4412-9730-1219801d1e54\",\n" +
-            "      \"price\": {\n" +
-            "          \"min\": 0,\n" +
-            "          \"max\": 9999.99,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": 50,\n" +
-            "          \"type\": \"number\"\n" +
-            "      },\n" +
-            "      \"description\": {\n" +
-            "          \"min\": 1,\n" +
-            "          \"unique\": {\n" +
-            "              \"value\": \"true\"\n" +
-            "          },\n" +
-            "          \"max\": 128,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": {\n" +
-            "              \"pt-pt\": \"Chave\",\n" +
-            "              \"es-es\": \"Llave\",\n" +
-            "              \"en-us\": \"Key\"\n" +
-            "          },\n" +
-            "          \"type\": \"string\"\n" +
-            "      }\n" +
-            "  }\n" +
-            "]";
+        "  {\n" +
+        "      \"id\": \"258fd859-f2df-4a0e-8321-ca4d96831dd7\",\n" +
+        "      \"price\": {\n" +
+        "          \"min\": 0,\n" +
+        "          \"max\": 9999.99,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": 10,\n" +
+        "          \"type\": \"number\"\n" +
+        "      },\n" +
+        "      \"description\": {\n" +
+        "          \"min\": 1,\n" +
+        "          \"unique\": {\n" +
+        "              \"value\": \"true\"\n" +
+        "          },\n" +
+        "          \"max\": 128,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": {\n" +
+        "              \"pt-pt\": \"Passe\",\n" +
+        "              \"en-us\": \"Pass\",\n" +
+        "              \"es-es\": \"Passe\"\n" +
+        "          },\n" +
+        "          \"type\": \"string\"\n" +
+        "      }\n" +
+        "  },\n" +
+        "  {\n" +
+        "      \"id\": \"22565b63-da97-4412-9730-1219801d1e54\",\n" +
+        "      \"price\": {\n" +
+        "          \"min\": 0,\n" +
+        "          \"max\": 9999.99,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": 50,\n" +
+        "          \"type\": \"number\"\n" +
+        "      },\n" +
+        "      \"description\": {\n" +
+        "          \"min\": 1,\n" +
+        "          \"unique\": {\n" +
+        "              \"value\": \"true\"\n" +
+        "          },\n" +
+        "          \"max\": 128,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": {\n" +
+        "              \"pt-pt\": \"Chave\",\n" +
+        "              \"es-es\": \"Llave\",\n" +
+        "              \"en-us\": \"Key\"\n" +
+        "          },\n" +
+        "          \"type\": \"string\"\n" +
+        "      }\n" +
+        "  }\n" +
+        "]";
 
     try {
       new JSONCollection(values);
@@ -302,59 +302,59 @@ public class JSONCollectionTest {
     }
   }
 
-  @Test (expectedExceptions = Exceptions.UniqueValueExpectationFailedException.class)
-  public void test_enforcement_of_unique_values_from_object_property_not_satisfied() throws BusinessException{
+  @Test(expectedExceptions = Exceptions.UniqueValueExpectationFailedException.class)
+  public void test_enforcement_of_unique_values_from_object_property_not_satisfied()
+    throws BusinessException {
     final String values = "[\n" +
-            "  {\n" +
-            "      \"id\": \"258fd859-f2df-4a0e-8321-ca4d96831dd7\",\n" +
-            "      \"price\": {\n" +
-            "          \"min\": 0,\n" +
-            "          \"max\": 9999.99,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": 10,\n" +
-            "          \"type\": \"number\"\n" +
-            "      },\n" +
-            "      \"description\": {\n" +
-            "          \"min\": 1,\n" +
-            "          \"unique\": {\n" +
-            "              \"value\": \"true\"\n" +
-            "          },\n" +
-            "          \"max\": 128,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": {\n" +
-            "              \"pt-pt\": \"Passe\",\n" +
-            "              \"en-us\": \"Pass\",\n" +
-            "              \"es-es\": \"Passe\"\n" +
-            "          },\n" +
-            "          \"type\": \"string\"\n" +
-            "      }\n" +
-            "  },\n" +
-            "  {\n" +
-            "      \"id\": \"22565b63-da97-4412-9730-1219801d1e54\",\n" +
-            "      \"price\": {\n" +
-            "          \"min\": 0,\n" +
-            "          \"max\": 9999.99,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": 50,\n" +
-            "          \"type\": \"number\"\n" +
-            "      },\n" +
-            "      \"description\": {\n" +
-            "          \"min\": 1,\n" +
-            "          \"unique\": {\n" +
-            "              \"value\": \"true\"\n" +
-            "          },\n" +
-            "          \"max\": 128,\n" +
-            "          \"mandatory\": \"true\",\n" +
-            "          \"value\": {\n" +
-            "              \"pt-pt\": \"Passe\",\n" +
-            "              \"en-us\": \"Pass\",\n" +
-            "              \"es-es\": \"Passe\"\n" +
-            "          },\n" +
-            "          \"type\": \"string\"\n" +
-            "      }\n" +
-            "  }\n" +
-            "]";
-
+        "  {\n" +
+        "      \"id\": \"258fd859-f2df-4a0e-8321-ca4d96831dd7\",\n" +
+        "      \"price\": {\n" +
+        "          \"min\": 0,\n" +
+        "          \"max\": 9999.99,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": 10,\n" +
+        "          \"type\": \"number\"\n" +
+        "      },\n" +
+        "      \"description\": {\n" +
+        "          \"min\": 1,\n" +
+        "          \"unique\": {\n" +
+        "              \"value\": \"true\"\n" +
+        "          },\n" +
+        "          \"max\": 128,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": {\n" +
+        "              \"pt-pt\": \"Passe\",\n" +
+        "              \"en-us\": \"Pass\",\n" +
+        "              \"es-es\": \"Passe\"\n" +
+        "          },\n" +
+        "          \"type\": \"string\"\n" +
+        "      }\n" +
+        "  },\n" +
+        "  {\n" +
+        "      \"id\": \"22565b63-da97-4412-9730-1219801d1e54\",\n" +
+        "      \"price\": {\n" +
+        "          \"min\": 0,\n" +
+        "          \"max\": 9999.99,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": 50,\n" +
+        "          \"type\": \"number\"\n" +
+        "      },\n" +
+        "      \"description\": {\n" +
+        "          \"min\": 1,\n" +
+        "          \"unique\": {\n" +
+        "              \"value\": \"true\"\n" +
+        "          },\n" +
+        "          \"max\": 128,\n" +
+        "          \"mandatory\": \"true\",\n" +
+        "          \"value\": {\n" +
+        "              \"pt-pt\": \"Passe\",\n" +
+        "              \"en-us\": \"Pass\",\n" +
+        "              \"es-es\": \"Passe\"\n" +
+        "          },\n" +
+        "          \"type\": \"string\"\n" +
+        "      }\n" +
+        "  }\n" +
+        "]";
 
     new JSONCollection(values);
 
@@ -362,79 +362,79 @@ public class JSONCollectionTest {
 
   @Test
   public void test_enforcement_of_unique_object_values_from_property_and_scope_has_at_least_one_distinct_value() {
-       final String values = ""
-            + "[\n"
-            + "   {\n"
-            + "      \"id\":\"589ad7f4-4648-43a7-8f80-4eaf27e45816\",\n"
-            + "      \"attr2\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe\",\n"
-            + "              \"en-us\": \"Pass\",\n"
-            + "              \"es-es\": \"Passe\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe\",\n"
-            + "              \"en-us\": \"Pass\",\n"
-            + "              \"es-es\": \"Passe\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{\n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{\n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"distinct\",\n"
-            + "            \"scope\":[\n"
-            + "               {\n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {\n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   },\n"
-            + "   {\n"
-            + "      \"id\":\"d7b55f37-c8e7-4911-8307-6df004220657\",\n"
-            + "      \"attr2\":{\n"
-            + "         \"type\":\"string\",\n"
-            +"          \"value\": {\n"
-            +"              \"pt-pt\": \"Passes\",\n"
-            +"              \"en-us\": \"Pass1\",\n"
-            +"              \"es-es\": \"Passe1\"\n"
-            +"          }\n"
-            + "      },\n"
-            + "      \"attr3\":{\n"
-            + "         \"type\":\"string\",\n"
-            +"          \"value\": {\n"
-            +"              \"pt-pt\": \"Passe\",\n"
-            +"              \"en-us\": \"Pass\",\n"
-            +"              \"es-es\": \"Passe\"\n"
-            +"          }\n"
-            + "      },\n"
-            + "      \"price2\":{\n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{\n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"distinct\",\n"
-            + "            \"scope\":[\n"
-            + "               {\n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {\n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   }\n"
-            + "]";
+    final String values = ""
+        + "[\n"
+        + "   {\n"
+        + "      \"id\":\"589ad7f4-4648-43a7-8f80-4eaf27e45816\",\n"
+        + "      \"attr2\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe\",\n"
+        + "              \"en-us\": \"Pass\",\n"
+        + "              \"es-es\": \"Passe\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe\",\n"
+        + "              \"en-us\": \"Pass\",\n"
+        + "              \"es-es\": \"Passe\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{\n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{\n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"distinct\",\n"
+        + "            \"scope\":[\n"
+        + "               {\n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {\n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   },\n"
+        + "   {\n"
+        + "      \"id\":\"d7b55f37-c8e7-4911-8307-6df004220657\",\n"
+        + "      \"attr2\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passes\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe\",\n"
+        + "              \"en-us\": \"Pass\",\n"
+        + "              \"es-es\": \"Passe\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{\n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{\n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"distinct\",\n"
+        + "            \"scope\":[\n"
+        + "               {\n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {\n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   }\n"
+        + "]";
 
     try {
       new JSONCollection(values);
@@ -448,78 +448,78 @@ public class JSONCollectionTest {
   public void test_enforcement_of_unique_object_values_from_property_and_scope_has_at_least_one_distinct_value_not_satisfied() {
 
     final String values = ""
-            + "[\n"
-            + "   {\n"
-            + "      \"id\":\"d55df211-9c3c-43f8-aca3-d8f0a7c52691\",\n"
-            + "      \"attr2\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe\",\n"
-            + "              \"en-us\": \"Pass\",\n"
-            + "              \"es-es\": \"Passe\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe\",\n"
-            + "              \"en-us\": \"Pass\",\n"
-            + "              \"es-es\": \"Passe\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{\n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{\n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"distinct\",\n"
-            + "            \"scope\":[\n"
-            + "               {\n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {\n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   },\n"
-            + "   {\n"
-            + "      \"id\":\"81fc4e5a-ccc7-4b7f-a3db-22b21d378f0c\",\n"
-            + "      \"attr2\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe\",\n"
-            + "              \"en-us\": \"Pass\",\n"
-            + "              \"es-es\": \"Passe\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe\",\n"
-            + "              \"en-us\": \"Pass\",\n"
-            + "              \"es-es\": \"Passe\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{\n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{\n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"distinct\",\n"
-            + "            \"scope\":[\n"
-            + "               {\n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {\n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   }\n"
-            + "]";
+        + "[\n"
+        + "   {\n"
+        + "      \"id\":\"d55df211-9c3c-43f8-aca3-d8f0a7c52691\",\n"
+        + "      \"attr2\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe\",\n"
+        + "              \"en-us\": \"Pass\",\n"
+        + "              \"es-es\": \"Passe\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe\",\n"
+        + "              \"en-us\": \"Pass\",\n"
+        + "              \"es-es\": \"Passe\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{\n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{\n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"distinct\",\n"
+        + "            \"scope\":[\n"
+        + "               {\n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {\n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   },\n"
+        + "   {\n"
+        + "      \"id\":\"81fc4e5a-ccc7-4b7f-a3db-22b21d378f0c\",\n"
+        + "      \"attr2\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe\",\n"
+        + "              \"en-us\": \"Pass\",\n"
+        + "              \"es-es\": \"Passe\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe\",\n"
+        + "              \"en-us\": \"Pass\",\n"
+        + "              \"es-es\": \"Passe\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{\n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{\n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"distinct\",\n"
+        + "            \"scope\":[\n"
+        + "               {\n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {\n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   }\n"
+        + "]";
 
     try {
       new JSONCollection(values);
@@ -536,113 +536,113 @@ public class JSONCollectionTest {
   @Test
   public void test_enforcement_of_unique_object_values_in_all_the_scope_items() {
     final String values = ""
-            + "[\n"
-            + "   {\n"
-            + "      \"id\":\"905d39ff-3062-4032-8905-3ff3025da898\",\n"
-            + "      \"attr2\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{\n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{\n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"pkey\",\n"
-            + "            \"scope\":[\n"
-            + "               {\n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {\n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   },\n"
-            + "   {\n"
-            + "      \"id\":\"356eb178-6f2a-4827-8b62-f5dd3f25eeff\",\n"
-            + "      \"attr2\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe2\",\n"
-            + "              \"en-us\": \"Pass2\",\n"
-            + "              \"es-es\": \"Passe2\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{\n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{\n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"pkey\",\n"
-            + "            \"scope\":[\n"
-            + "               {\n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {\n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   },\n"
-            + "   {\n"
-            + "      \"id\":\"e2ac8e87-5c86-4f16-92f0-5c68a9006efd\",\n"
-            + "      \"attr2\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe2\",\n"
-            + "              \"en-us\": \"Pass2\",\n"
-            + "              \"es-es\": \"Passe2\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{\n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{\n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{\n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"pkey\",\n"
-            + "            \"scope\":[\n"
-            + "               {\n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {\n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   }"
-            + "]";
+        + "[\n"
+        + "   {\n"
+        + "      \"id\":\"905d39ff-3062-4032-8905-3ff3025da898\",\n"
+        + "      \"attr2\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{\n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{\n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"pkey\",\n"
+        + "            \"scope\":[\n"
+        + "               {\n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {\n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   },\n"
+        + "   {\n"
+        + "      \"id\":\"356eb178-6f2a-4827-8b62-f5dd3f25eeff\",\n"
+        + "      \"attr2\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe2\",\n"
+        + "              \"en-us\": \"Pass2\",\n"
+        + "              \"es-es\": \"Passe2\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{\n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{\n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"pkey\",\n"
+        + "            \"scope\":[\n"
+        + "               {\n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {\n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   },\n"
+        + "   {\n"
+        + "      \"id\":\"e2ac8e87-5c86-4f16-92f0-5c68a9006efd\",\n"
+        + "      \"attr2\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe2\",\n"
+        + "              \"en-us\": \"Pass2\",\n"
+        + "              \"es-es\": \"Passe2\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{\n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{\n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{\n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"pkey\",\n"
+        + "            \"scope\":[\n"
+        + "               {\n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {\n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   }"
+        + "]";
 
     try {
       new JSONCollection(values);
@@ -655,78 +655,78 @@ public class JSONCollectionTest {
   @Test
   public void test_enforcement_of_unique_object_values_in_all_the_scope_items_not_satisfied() {
     final String values = ""
-            + "[  \n"
-            + "   {  \n"
-            + "      \"id\":\"d173cb97-8e1f-4931-b0a6-acf4940be296\",\n"
-            + "      \"attr2\":{  \n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{  \n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{  \n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{  \n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"pkey\",\n"
-            + "            \"scope\":[  \n"
-            + "               {  \n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {  \n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   },\n"
-            + "   {  \n"
-            + "      \"id\":\"26061275-f623-4ded-a307-e5b596c16e60\",\n"
-            + "      \"attr2\":{  \n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"attr3\":{  \n"
-            + "         \"type\":\"string\",\n"
-            + "          \"value\": {\n"
-            + "              \"pt-pt\": \"Passe1\",\n"
-            + "              \"en-us\": \"Pass1\",\n"
-            + "              \"es-es\": \"Passe1\"\n"
-            + "          }\n"
-            + "      },\n"
-            + "      \"price2\":{  \n"
-            + "         \"type\":\"number\",\n"
-            + "         \"value\":888,\n"
-            + "         \"unique\":{  \n"
-            + "            \"value\":\"true\",\n"
-            + "            \"mode\":\"pkey\",\n"
-            + "            \"scope\":[  \n"
-            + "               {  \n"
-            + "                  \"field\":\"attr2\"\n"
-            + "               },\n"
-            + "               {  \n"
-            + "                  \"field\":\"attr3\"\n"
-            + "               }\n"
-            + "            ]\n"
-            + "         }\n"
-            + "      }\n"
-            + "   }\n"
-            + "]";
+        + "[  \n"
+        + "   {  \n"
+        + "      \"id\":\"d173cb97-8e1f-4931-b0a6-acf4940be296\",\n"
+        + "      \"attr2\":{  \n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{  \n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{  \n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{  \n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"pkey\",\n"
+        + "            \"scope\":[  \n"
+        + "               {  \n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {  \n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   },\n"
+        + "   {  \n"
+        + "      \"id\":\"26061275-f623-4ded-a307-e5b596c16e60\",\n"
+        + "      \"attr2\":{  \n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"attr3\":{  \n"
+        + "         \"type\":\"string\",\n"
+        + "          \"value\": {\n"
+        + "              \"pt-pt\": \"Passe1\",\n"
+        + "              \"en-us\": \"Pass1\",\n"
+        + "              \"es-es\": \"Passe1\"\n"
+        + "          }\n"
+        + "      },\n"
+        + "      \"price2\":{  \n"
+        + "         \"type\":\"number\",\n"
+        + "         \"value\":888,\n"
+        + "         \"unique\":{  \n"
+        + "            \"value\":\"true\",\n"
+        + "            \"mode\":\"pkey\",\n"
+        + "            \"scope\":[  \n"
+        + "               {  \n"
+        + "                  \"field\":\"attr2\"\n"
+        + "               },\n"
+        + "               {  \n"
+        + "                  \"field\":\"attr3\"\n"
+        + "               }\n"
+        + "            ]\n"
+        + "         }\n"
+        + "      }\n"
+        + "   }\n"
+        + "]";
 
     try {
       new JSONCollection(values);
@@ -743,42 +743,42 @@ public class JSONCollectionTest {
   @Test
   public void test_enforcement_of_unique_object_values_from_property_with_deleted_values() {
     final String values = ""
-            + "[\n" +
-            "        {\n" +
-            "          \"text\": {\n" +
-            "            \"min\": 1,\n" +
-            "            \"max\": 64,\n" +
-            "            \"unique\": {\n" +
-            "              \"value\": \"true\"\n" +
-            "            },\n" +
-            "            \"type\": \"string\",\n" +
-            "            \"value\": {\n" +
-            "              \"en-us\": \"Facebook\",\n" +
-            "              \"es-es\": \"Facebook\"\n" +
-            "            },\n" +
-            "            \"mandatory\": \"true\"\n" +
-            "          },\n" +
-            "          \"id\": \"7aa0aa1b-65bf-4b51-bacd-bb7db9be5cfd\",\n" +
-            "          \"state\": -1\n" +
-            "        },\n" +
-            "        {\n" +
-            "          \"text\": {\n" +
-            "            \"min\": 1,\n" +
-            "            \"max\": 64,\n" +
-            "            \"unique\": {\n" +
-            "              \"value\": \"true\"\n" +
-            "            },\n" +
-            "            \"type\": \"string\",\n" +
-            "            \"value\": {\n" +
-            "              \"en-us\": \"Facebook\",\n" +
-            "              \"es-es\": \"Facebook\"\n" +
-            "            },\n" +
-            "            \"mandatory\": \"true\"\n" +
-            "          },\n" +
-            "          \"id\": \"7aa0aa1b-65bf-4b51-bacd-bb7db9be5cfe\",\n" +
-            "          \"state\": 0\n" +
-            "        }\n" +
-            "      ]";
+        + "[\n" +
+        "        {\n" +
+        "          \"text\": {\n" +
+        "            \"min\": 1,\n" +
+        "            \"max\": 64,\n" +
+        "            \"unique\": {\n" +
+        "              \"value\": \"true\"\n" +
+        "            },\n" +
+        "            \"type\": \"string\",\n" +
+        "            \"value\": {\n" +
+        "              \"en-us\": \"Facebook\",\n" +
+        "              \"es-es\": \"Facebook\"\n" +
+        "            },\n" +
+        "            \"mandatory\": \"true\"\n" +
+        "          },\n" +
+        "          \"id\": \"7aa0aa1b-65bf-4b51-bacd-bb7db9be5cfd\",\n" +
+        "          \"state\": -1\n" +
+        "        },\n" +
+        "        {\n" +
+        "          \"text\": {\n" +
+        "            \"min\": 1,\n" +
+        "            \"max\": 64,\n" +
+        "            \"unique\": {\n" +
+        "              \"value\": \"true\"\n" +
+        "            },\n" +
+        "            \"type\": \"string\",\n" +
+        "            \"value\": {\n" +
+        "              \"en-us\": \"Facebook\",\n" +
+        "              \"es-es\": \"Facebook\"\n" +
+        "            },\n" +
+        "            \"mandatory\": \"true\"\n" +
+        "          },\n" +
+        "          \"id\": \"7aa0aa1b-65bf-4b51-bacd-bb7db9be5cfe\",\n" +
+        "          \"state\": 0\n" +
+        "        }\n" +
+        "      ]";
 
     try {
       new JSONCollection(values);
@@ -1098,7 +1098,7 @@ public class JSONCollectionTest {
 
   @Test
   public void test_serialize_and_deserialize_and_stay_the_same()
-      throws IOException, BusinessException {
+    throws IOException, BusinessException {
 
     String values = ""//
         + "[  \n"//
@@ -1641,4 +1641,48 @@ public class JSONCollectionTest {
 
     assertEquals(resultCollection.getValue().toString(), expectedCollection.getValue().toString());
   }
+
+  @Test
+  public void test_create_JSON_collection_with_simple_object()
+    throws BusinessException {
+
+    JSONObject atomicSchemaObject = new JSONObject(
+        "{\n" +
+            "    \"id\": \"00000000-0000-0000-0000-00000000\",\n" +
+            "    \"state\": \"0\",\n" +
+            "    \"checklist\": []\n" +
+            "}");
+
+    JSONArray valuesCollectionObject = new JSONArray(
+        "[\n" +
+            "    {\n" +
+            "        \"id\": \"7c889624-021a-4b38-a1ee-29a4dd590455\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": [\"val1\", \"val3\"]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"id\": \"4ca2c405-0f05-4ca9-b1df-3e2a733cc352\",\n" +
+            "        \"state\": \"0\",\n" +
+            "    }\n" +
+            "]");
+
+    JSONCollection resultCollection = new JSONCollection(atomicSchemaObject, valuesCollectionObject);
+
+    JSONCollection expectedCollection = new JSONCollection(
+        "[\n" +
+            "    {\n" +
+            "        \"id\": \"7c889624-021a-4b38-a1ee-29a4dd590455\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": [\"val1\", \"val3\"]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"id\": \"4ca2c405-0f05-4ca9-b1df-3e2a733cc352\",\n" +
+            "        \"state\": \"0\",\n" +
+            "        \"checklist\": []\n" +
+            "    }\n" +
+            "]");
+    
+    assertEquals(resultCollection.getValue().toString(), expectedCollection.getValue().toString());
+  }
+
 }

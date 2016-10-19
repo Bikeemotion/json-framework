@@ -31,12 +31,20 @@ import org.json.JSONObject;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JSONArraySerializer extends JsonSerializer<JSONArray> {
+  
+    private static final Logger log = LoggerFactory.getLogger(JSONArraySerializer.class);
+
 
   @Override
   public void serialize(JSONArray value, JsonGenerator jsonGenerator,
       SerializerProvider provider) throws IOException {
+    
+    log.info("Serialize");
+    
     jsonGenerator.writeStartArray();
     for (int i = 0; i < value.length(); i++) {
       jsonGenerator.writeStartObject();
@@ -64,9 +72,22 @@ public class JSONArraySerializer extends JsonSerializer<JSONArray> {
         jsonGenerator.writeFieldName(key);
         jsonGenerator.writeStartArray();
         for (int i = 0; i < array.length(); i++) {
-          jsonGenerator.writeStartObject();
-          constructObject(array.getJSONObject(i), jsonGenerator);
-          jsonGenerator.writeEndObject();
+          Object o = array.get(i);
+          if (o instanceof JSONObject) {
+            jsonGenerator.writeStartObject();
+            constructObject(array.getJSONObject(i), jsonGenerator);
+            jsonGenerator.writeEndObject();
+          } else {
+            if (o instanceof Integer) {
+              jsonGenerator.writeNumber((Integer) o);
+            } else if (o instanceof Double) {
+              jsonGenerator.writeNumber((Double) o);
+            } else if (o instanceof Long) {
+              jsonGenerator.writeNumber((Long) o);
+            } else {
+              jsonGenerator.writeString(o.toString());
+            }
+          }
         }
         jsonGenerator.writeEndArray();
       } else {

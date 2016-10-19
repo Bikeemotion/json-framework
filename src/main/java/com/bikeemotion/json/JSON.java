@@ -851,8 +851,11 @@ public class JSON implements Serializable {
             (!schemaObject.has(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG) || 
             !((String) schemaObject.get(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG))
                 .equals(Constants.NODE_CUSTOM_PROPERTY_TYPE_TAG_INSTANCE_STRING))) {
-          deepAdd((JSONObject) schemaKeyValueCollection.getJSONObject(0),
-              (JSONObject) newValueObject.getJSONArray(key).get(0));
+          // only deep add complex objects in arrays
+          Object schemaArrayElement = schemaKeyValueCollection.get(0);
+          if (schemaArrayElement instanceof JSONObject) {
+            deepAdd((JSONObject) schemaArrayElement, (JSONObject) newValueObject.getJSONArray(key).get(0));
+          }
         }
       }
     }
