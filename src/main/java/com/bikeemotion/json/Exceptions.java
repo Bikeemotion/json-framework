@@ -11,7 +11,8 @@
  */
 package com.bikeemotion.json;
 
-import com.bikeemotion.common.exception.BusinessException;
+
+import com.bikeemotion.core.exception.BusinessException;
 
 public class Exceptions {
 

@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
 
-import com.bikeemotion.common.exception.BusinessException;
+import com.bikeemotion.core.exception.BusinessException;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
